@@ -11,6 +11,8 @@
 		A72DD3C127B1AFFA00F34068 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72DD3C027B1AFFA00F34068 /* ContentView.swift */; };
 		A72DD3C327B1AFFB00F34068 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A72DD3C227B1AFFB00F34068 /* Assets.xcassets */; };
 		A72DD3C627B1AFFB00F34068 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A72DD3C527B1AFFB00F34068 /* Preview Assets.xcassets */; };
+		A78DD23C27B2EAD500309AE0 /* InfoPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78DD23B27B2EAD500309AE0 /* InfoPanelView.swift */; };
+		A78DD23E27B2F93500309AE0 /* ButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78DD23D27B2F93500309AE0 /* ButtonsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		A72DD3C027B1AFFA00F34068 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A72DD3C227B1AFFB00F34068 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A72DD3C527B1AFFB00F34068 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A78DD23B27B2EAD500309AE0 /* InfoPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPanelView.swift; sourceTree = "<group>"; };
+		A78DD23D27B2F93500309AE0 /* ButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +85,8 @@
 		A72DD3CD27B1B20600F34068 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A78DD23B27B2EAD500309AE0 /* InfoPanelView.swift */,
+				A78DD23D27B2F93500309AE0 /* ButtonsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -171,6 +177,8 @@
 			files = (
 				A72DD3C127B1AFFA00F34068 /* ContentView.swift in Sources */,
 				A72DD3BF27B1AFFA00F34068 /* PinchZoomApp.swift in Sources */,
+				A78DD23E27B2F93500309AE0 /* ButtonsView.swift in Sources */,
+				A78DD23C27B2EAD500309AE0 /* InfoPanelView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

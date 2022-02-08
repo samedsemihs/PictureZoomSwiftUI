@@ -11,20 +11,29 @@ struct ContentView: View {
     // MARK: - PROPERTY
     @State var isAnimating: Bool = false
     @State var imageScale: CGFloat = 1
+    @State var imageOffset: CGSize = .zero
     
     // MARK: - FUNCTION
-    
+    func resetImage() -> Void {
+        withAnimation(.spring()){
+            imageOffset = .zero
+            imageScale = 1
+        }
+    }
     // MARK: - CONTENT
     
     var body: some View {
         NavigationView{
             ZStack{
+                Color.clear
+                
                 // MARK: - PAGE
                 Image("magazine-front-cover")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .cornerRadius(10)
-                    //.padding()
+                    .padding()
+                    .offset(x: imageOffset.width, y: imageOffset.height)
                     .shadow(color: .black.opacity(0.2), radius: 12, x: 2, y: 2)
                     .animation(.linear(duration: 1), value: isAnimating)
                     .scaleEffect(imageScale)
@@ -40,6 +49,20 @@ struct ContentView: View {
                             }
                         }
                     })
+                // MARK: - DRAG GESTURE
+                    .gesture(
+                        DragGesture()
+                            .onChanged({ gesture in
+                                withAnimation(.linear(duration: 1)){
+                                    if imageOffset.width <= UIScreen.main.bounds.width && imageOffset.height <= UIScreen.main.bounds.height {
+                                        imageOffset = gesture.translation
+                                    }
+                                }
+                            })
+                            .onEnded({ _ in
+                                    resetImage()
+                            })
+                    )
                     
                 
             }//: ZSTACK
@@ -48,6 +71,52 @@ struct ContentView: View {
             .onAppear(perform: {
                 isAnimating.toggle()
             })
+            
+            // MARK: - INFO PANEL
+            .overlay(
+                InfoPanelView(offset: imageOffset, scale: imageScale)
+                    .padding(.horizontal)
+                    .padding(.top, 30)
+                , alignment: .top
+            )
+            
+            // MARK: - CONTROL PANEL
+            .overlay(
+                Group{
+                    HStack{
+                        // SCALE MINUS
+                        Button(action: {
+                            if imageScale >= 1 && imageScale < 5 {
+                                withAnimation(.spring()){
+                                    imageScale += 1
+                                }
+                            }
+                        }){
+                            ButtonsView(iconName: "plus.magnifyingglass")
+                        }
+                        
+                        // RESET
+                        Button(action: {
+                            resetImage()
+                        }){
+                            ButtonsView(iconName: "arrow.up.left.and.down.right.magnifyingglass")
+                        }
+                        
+                        //SCALE PLUS
+                        Button(action: {
+                            if imageScale > 1 && imageScale < 5 {
+                                withAnimation(.spring()){
+                                    imageScale -= 1
+                                }
+                            }
+                        }){
+                            ButtonsView(iconName: "minus.magnifyingglass")
+                        }
+                        
+                    }
+                }
+                ,alignment: .bottom
+            )
         }//: NAVIGATION
         .navigationViewStyle(.stack)
     }
